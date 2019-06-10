@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button, Form, Label, Input, Select, Option } from 'reactstrap';
 
 const AddBuyOrder = props => {
   const initialFormState = { id: null, name: '', maxBidPrice: '', dataPackage: '' }
@@ -9,7 +10,7 @@ const AddBuyOrder = props => {
   }
   // Add state to localStorage after form submits
   return (
-    <form
+    <Form
       onSubmit={event => {
         event.preventDefault()
         if(!buyOrder.name || !buyOrder.maxBidPrice || !buyOrder.dataPackage) return
@@ -18,19 +19,19 @@ const AddBuyOrder = props => {
       }}
     >
 
-      <label>Name</label>
-      <input type="text" name="name" value={buyOrder.name} onChange={handleInputChange}/>
-      <label>Max Bid Price</label>
-      <input type="text" name="maxBidPrice" value={buyOrder.maxBidPrice} onChange={handleInputChange} />
-      <label>Data Package</label>
+      <Label>Name</Label>
+      <Input type="text" name="name" value={buyOrder.name} onChange={handleInputChange}/>
+      <Label>Max Bid Price</Label>
+      <Input type="text" name="maxBidPrice" value={buyOrder.maxBidPrice} onChange={handleInputChange} />
+      <Label>Data Package</Label>
       <select defaultValue={"default"} name="dataPackage" onChange={handleInputChange}>
         <option value="default" disabled>Please Select an Option</option>
         <option value="Device Location">Device Location</option>
         <option value="Device Behavior">Device Behavior</option>
         <option value="ID Mapping">ID Mapping</option>
       </select>
-      <button>Add New Buy Order</button>
-    </form>
+      <Button>Add New Buy Order</Button>
+    </Form>
   )
 }
 

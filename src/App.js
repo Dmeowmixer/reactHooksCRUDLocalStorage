@@ -1,9 +1,9 @@
 import React, { useState, Fragment } from 'react';
 import './App.css';
-// import BuyOrders from './Components/BuyOrders/BuyOrders';
 import BuyOrderTable from './Components/BuyOrders/BuyOrderTable';
 import AddOrderForm from './Components/Forms/AddOrderForm';
 import EditOrderForm from './Components/Forms/EditOrderForm';
+
 const App = () => {
   const buyOrdersData = JSON.parse(localStorage.getItem('buyOrders')) || [];
 
@@ -29,7 +29,7 @@ const App = () => {
   const editRow = buyOrder => {
     setEditing(true);
     setCurrentBuyOrder({id: buyOrder.id, name: buyOrder.name, maxBidPrice: buyOrder.maxBidPrice, dataPackage: buyOrder.dataPackage});
-    localStorage.setItem('buyOrders', [...buyOrders])
+    localStorage.setItem('buyOrders', JSON.stringify([...buyOrders]))
   }
   return (
     <div className="container">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Form, Button } from 'reactstrap';
 
 const EditOrderForm = props => {
   const [buyOrder, setBuyOrder] = useState(props.currentBuyOrder);
@@ -10,7 +11,7 @@ const EditOrderForm = props => {
     setBuyOrder({...buyOrder, [name]: value})
   }
   return(
-    <form 
+    <Form 
       onSubmit={event => {
         event.preventDefault()
         props.updateBuyOrder(buyOrder.id, buyOrder)
@@ -25,9 +26,9 @@ const EditOrderForm = props => {
         <option value="Device Behavior">Device Behavior</option>
         <option value="ID Mapping">ID Mapping</option>
       </select>
-      <button>Update Order</button>
-      <button onClick={() => props.setEditing(false)}>Cancel</button>
-    </form>
+      <Button>Update Order</Button>
+      <Button onClick={() => props.setEditing(false)}>Cancel</Button>
+    </Form>
   )
 }
 export default EditOrderForm;
