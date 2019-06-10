@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, Label, Input } from 'reactstrap';
 
+
 const AddBuyOrder = props => {
   const initialFormState = { id: null, name: '', maxBidPrice: '', dataPackage: '' }
   const [buyOrder, setBuyOrder] = useState(initialFormState)
@@ -30,7 +31,7 @@ const AddBuyOrder = props => {
         <option value="Device Behavior">Device Behavior</option>
         <option value="ID Mapping">ID Mapping</option>
       </select>
-      <Button color="primary">Add New Buy Order</Button>
+      <Button className="addButton" color="primary">Add New Buy Order</Button>
     </Form>
   )
 }

@@ -3,6 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, Row, Col } from 'reactstrap';
 
+import Navbar from './Components/Navbar/Navbar';
 import BuyOrderTable from './Components/BuyOrders/BuyOrderTable';
 import AddOrderForm from './Components/Forms/AddOrderForm';
 import EditOrderForm from './Components/Forms/EditOrderForm';
@@ -36,35 +37,38 @@ const App = () => {
     setCurrentBuyOrder({id: buyOrder.id, name: buyOrder.name, maxBidPrice: buyOrder.maxBidPrice, dataPackage: buyOrder.dataPackage});
   }
   return (
-    <Container>
-      <Row>
-        <Col xs="12">
-          <h1>Narrative</h1>
-        </Col>
-      </Row>
-      <Row >
-        <Col xs="6">
-          {editing ? (
-            <Fragment>
-              <EditOrderForm 
-                editing={editing}
-                setEditing={setEditing}
-                currentBuyOrder={currentBuyOrder}
-                updateBuyOrder={updateBuyOrder}
-              />
-            </Fragment>
-            ):(
+    <div>
+      <Navbar />
+      <Container>
+        <Row className="mainTitle">
+          <Col xs="12">
+            <h1>Narrative</h1>
+          </Col>
+        </Row>
+        <Row className="bodyContent">
+          <Col className="orderForms" xs="6">
+            {editing ? (
               <Fragment>
-                <AddOrderForm addOrder={addOrder}/>
+                <EditOrderForm 
+                  editing={editing}
+                  setEditing={setEditing}
+                  currentBuyOrder={currentBuyOrder}
+                  updateBuyOrder={updateBuyOrder}
+                />
               </Fragment>
-            )
-          }
-        </Col>
-        <Col xs="6">
-          <BuyOrderTable buyOrders={buyOrders} editRow={editRow} deleteOrder={deleteOrder}/>
-        </Col>
-      </Row>
-    </Container>
+              ):(
+                <Fragment>
+                  <AddOrderForm addOrder={addOrder}/>
+                </Fragment>
+              )
+            }
+          </Col>
+          <Col className="orderTable" xs="6">
+            <BuyOrderTable buyOrders={buyOrders} editRow={editRow} deleteOrder={deleteOrder}/>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 }
 

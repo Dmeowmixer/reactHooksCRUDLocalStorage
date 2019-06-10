@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Label, Input } from 'reactstrap';
+import './Forms.css';
 
 const EditOrderForm = props => {
   const [buyOrder, setBuyOrder] = useState(props.currentBuyOrder);
@@ -26,8 +27,8 @@ const EditOrderForm = props => {
         <option value="Device Behavior">Device Behavior</option>
         <option value="ID Mapping">ID Mapping</option>
       </select>
-      <Button color="primary">Update Order</Button>
-      <Button color="primary" onClick={() => props.setEditing(false)}>Cancel</Button>
+      <Button className="button" color="primary">Update Order</Button>
+      <Button className="button" color="primary" onClick={() => props.setEditing(false)}>Cancel</Button>
     </Form>
   )
 }

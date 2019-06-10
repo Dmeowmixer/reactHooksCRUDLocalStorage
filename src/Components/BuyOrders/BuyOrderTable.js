@@ -18,7 +18,7 @@ const BuyOrderTable = props => (
           <td>{buyOrder.maxBidPrice}</td>
           <td>{buyOrder.dataPackage}</td>
           <td>
-            <Button color="primary" onClick={() => { props.editRow(buyOrder) }}
+            <Button className="editButton" color="primary" onClick={() => { props.editRow(buyOrder) }}
             >Edit</Button>
             <Button color="primary"onClick={() => props.deleteOrder(buyOrder.id)}>Delete</Button>
           </td>
