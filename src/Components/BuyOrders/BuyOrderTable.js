@@ -1,6 +1,8 @@
 import React from 'react';
+import { Table, Button } from 'reactstrap';
+
 const BuyOrderTable = props => (
-  <table>
+  <Table>
     <thead>
       <tr>
         <th>Name</th>
@@ -16,9 +18,9 @@ const BuyOrderTable = props => (
           <td>{buyOrder.maxBidPrice}</td>
           <td>{buyOrder.dataPackage}</td>
           <td>
-            <button onClick={() => { props.editRow(buyOrder) }}
-            >Edit</button>
-            <button onClick={() => props.deleteOrder(buyOrder.id)}>Delete</button>
+            <Button color="primary" onClick={() => { props.editRow(buyOrder) }}
+            >Edit</Button>
+            <Button color="primary"onClick={() => props.deleteOrder(buyOrder.id)}>Delete</Button>
           </td>
         </tr>
         ))
@@ -28,7 +30,7 @@ const BuyOrderTable = props => (
       </tr>
       )}
     </tbody>
-  </table>
+  </Table>
 )
 
 export default BuyOrderTable;

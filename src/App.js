@@ -1,5 +1,8 @@
 import React, { useState, Fragment } from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import { Container, Row, Col } from 'reactstrap';
+
 import BuyOrderTable from './Components/BuyOrders/BuyOrderTable';
 import AddOrderForm from './Components/Forms/AddOrderForm';
 import EditOrderForm from './Components/Forms/EditOrderForm';
@@ -20,7 +23,8 @@ const App = () => {
   }
   const deleteOrder = id => {
     setBuyOrders(buyOrders.filter(buyOrder => buyOrder.id !== id ));
-    localStorage.removeItem(buyOrders.filter(buyOrder => buyOrder.id !== id));
+    localStorage.setItem('buyOrders', JSON.stringify(buyOrders.filter(buyOrder => buyOrder.id !== id)));
+    // localStorage.removeItem(buyOrders.filter(buyOrder => buyOrder.id !== id));
   }
   const updateBuyOrder = (id, updatedBuyOrder) => {
     setEditing(false);
@@ -32,28 +36,35 @@ const App = () => {
     setCurrentBuyOrder({id: buyOrder.id, name: buyOrder.name, maxBidPrice: buyOrder.maxBidPrice, dataPackage: buyOrder.dataPackage});
   }
   return (
-    <div className="container">
-      <div>
-        {editing ? (
-          <Fragment>
-            <EditOrderForm 
-              editing={editing}
-              setEditing={setEditing}
-              currentBuyOrder={currentBuyOrder}
-              updateBuyOrder={updateBuyOrder}
-            />
-          </Fragment>
-          ):(
+    <Container>
+      <Row>
+        <Col xs="12">
+          <h1>Narrative</h1>
+        </Col>
+      </Row>
+      <Row >
+        <Col xs="6">
+          {editing ? (
             <Fragment>
-              <AddOrderForm addOrder={addOrder}/>
+              <EditOrderForm 
+                editing={editing}
+                setEditing={setEditing}
+                currentBuyOrder={currentBuyOrder}
+                updateBuyOrder={updateBuyOrder}
+              />
             </Fragment>
-          )
-        }
-      </div>
-      <div className="App">
-        <BuyOrderTable buyOrders={buyOrders} editRow={editRow} deleteOrder={deleteOrder}/>
-      </div>
-    </div>
+            ):(
+              <Fragment>
+                <AddOrderForm addOrder={addOrder}/>
+              </Fragment>
+            )
+          }
+        </Col>
+        <Col xs="6">
+          <BuyOrderTable buyOrders={buyOrders} editRow={editRow} deleteOrder={deleteOrder}/>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

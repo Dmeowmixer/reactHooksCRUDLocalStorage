@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, Label, Input, Select, Option } from 'reactstrap';
+import { Button, Form, Label, Input } from 'reactstrap';
 
 const AddBuyOrder = props => {
   const initialFormState = { id: null, name: '', maxBidPrice: '', dataPackage: '' }
@@ -24,13 +24,13 @@ const AddBuyOrder = props => {
       <Label>Max Bid Price</Label>
       <Input type="text" name="maxBidPrice" value={buyOrder.maxBidPrice} onChange={handleInputChange} />
       <Label>Data Package</Label>
-      <select defaultValue={"default"} name="dataPackage" onChange={handleInputChange}>
+      <select className="custom-select" defaultValue={"default"} name="dataPackage" onChange={handleInputChange}>
         <option value="default" disabled>Please Select an Option</option>
         <option value="Device Location">Device Location</option>
         <option value="Device Behavior">Device Behavior</option>
         <option value="ID Mapping">ID Mapping</option>
       </select>
-      <Button>Add New Buy Order</Button>
+      <Button color="primary">Add New Buy Order</Button>
     </Form>
   )
 }
