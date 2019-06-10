@@ -25,11 +25,11 @@ const App = () => {
   const updateBuyOrder = (id, updatedBuyOrder) => {
     setEditing(false);
     setBuyOrders(buyOrders.map(buyOrder => (buyOrder.id === id ? updatedBuyOrder : buyOrder)));
+    localStorage.setItem('buyOrders', JSON.stringify(buyOrders.map(buyOrder => (buyOrder.id === id ? updatedBuyOrder : buyOrder))))
   }
   const editRow = buyOrder => {
     setEditing(true);
     setCurrentBuyOrder({id: buyOrder.id, name: buyOrder.name, maxBidPrice: buyOrder.maxBidPrice, dataPackage: buyOrder.dataPackage});
-    localStorage.setItem('buyOrders', JSON.stringify([...buyOrders]))
   }
   return (
     <div className="container">
